@@ -1,0 +1,388 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:bib="http://bibtexml.sf.net/">
+  <title>Introduction to (Software) Design</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f8fd4ebb-0110-40a6-815f-c4ef5247934f</md:uuid>
+</metadata>
+  <content>
+    <para id="id2253696">Before setting up to the task of studying and applying Software Architecture, it is convenient to know where – within the range of Software Engineering Body of Knowledge – Software Architecture should be placed as a discipline. Besides, the implementation of Software architectural design is the first of two activities that comprise the Software Design Knowledge Area (the other activity is that of software detailed design). As part of Software Design, Software Architecture is a mixture of method and creativity. Software Architecture lies beyond the range of this book whose purpose does not include the teaching of creativity. Creativity is something that results from experience, thus it is not the purpose of this book teach it. However, the authors seek to impart the knowledge needed for you to create software system architectures.</para>
+    <para id="id2253731">A sound knowledge of the fundamentals of Software Design is certainly needed for you to take up the material covered in this book. Therefore, this chapter will provide you with an overall view of these fundamentals, expounding them further by setting up an underlying, supportive foundation to help you recognize both the relevance and the advantages of software design. In other words, it will provide you with the necessary knowledge that will enable you to:</para>
+    <list id="id2253746" list-type="bulleted">
+      <item id="uid1">Recognize the basic concepts required to design software
+</item>
+      <item id="uid2">Describe a design problem by way of its fundamental elements
+</item>
+      <item id="uid3">Identify design <emphasis>enabling techniques</emphasis> and explain their benefits
+</item>
+      <item id="uid4">Differentiate low-level design activities from high-level design activities, and know when to apply either of them.
+</item>
+    </list>
+    <section id="cid1">
+      <title>Design and Software Design</title>
+      <para id="id2253807">The relevance of the practice (and, therefore, of the study) of Software Design can be explained by the ever-increasing complexity of software systems. Because of such complexity, the risk of building a system that will not meet its goals is indeed too high.</para>
+      <para id="id2253814">In order to avoid such a risk, the rule of thumb of any engineering process for building a complex artifact is to build it according to a pre-established plan, <emphasis>e.g.</emphasis>, to <emphasis>design</emphasis> it before building it. Therefore, the purpose of design is twofold. One is to allow you to build models that can be analyzed and evaluated against their aimed objectives before they are actually built; and the other is to serve as a guide for the artifact assemblage after it has passed both the analysis and the evaluation phases.</para>
+      <section id="uid5">
+        <title>Characteristics of Design</title>
+        <para id="id2253843">There are several reasons for designing an artifact before building it. The following paragraphs describe some of them.</para>
+        <para id="id2253849"><emphasis>Design enables early evaluation.</emphasis> The building process of an artifact can be very expensive in terms of time and money. Because it helps to ensure that the right thing is being built, those involved in this process desire the possibility of early evaluation. Since the products of design process often permit this kind evaluation and it often costs less than actually building the artifact, designing and early evaluating the artifact before building are recommended in order to save time and money.</para>
+        <para id="id2253865"><emphasis>Design demands modeling.</emphasis> When modeling, the designer's focus is on the problem, letting apart some complexity inherent to the final product. Since complexity is one of the greatest difficulties of artifact development <footnote id="idm752480">We call development the whole process from devising an artifact to eventually build it.</footnote>, any practice that helps to prevent is also highly recommended.</para>
+        <para id="id2253886"><emphasis>Design involves planning.</emphasis> Because of this, the design process helps on estimating costs, <emphasis>e.g.</emphasis>, how long it will take to build the artifact, how many men will be necessary to build it, what existing parts can be reused in current design, etc., and adds control to development.</para>
+        <para id="id2253903">Lastly, <emphasis>design facilitates communication.</emphasis> A design provides a common language in which knowledge about the artifact can be recorded, transmitted and discussed. So, if the artifact development involves more than one person and communication among the involved is desired, it is recommended to leverage design in order to assist communication.</para>
+        <para id="id2253918">In addition to these characteristics, we introduce two important points, which must be kept in mind while designing.</para>
+        <para id="id2253923">First, designing an artifact may be cheaper than building it, but is not cheap. Design takes time and money and must be performed with care and method. We will further see that design is made to achieve goals, but nothing ensures that the design goals will remain the same by the end of the design process. Consequently, this possible transient nature of design goals can bring risk to the design process and lead to failure, especially when performed by those not aware of this aspect of design goals.</para>
+        <para id="id2253935">Second, the design of an artifact is not the true artifact. This means that design evaluation against its goals cannot be perfect and its results must be analyzed carefully – always keeping in mind that there will be some intricacies out of the design that can deeply impact its success and, so, must not be completely ignored.</para>
+        <para id="id2253949">Please notice that these points above will be better illustrated when we restrict the subject of this chapter to design of software.</para>
+      </section>
+      <section id="uid7">
+        <title>Software design</title>
+        <para id="id2253962">Since design is a rather vast discipline, it is wise to pin down our subject. Authors usually define design in two steps: when it is used as a subject and when it is used as a verb. When used as a subject, design “indicates the [product] that emerges from the design process, some physical document or other kind of representation that articulates the intent of the designer. This product results from the choices the designer made, choices that form an abstraction of that what is eventually desired in the real world.” Moreover, as a verb, to design “indicates the process by which a design is achieved. It is a human-centered process, involving varied stakeholders. It is also understood to be strongly goal-driven and drawing upon established knowledge of the designer and the field at large.” <link target-id="bid0"/></para>
+        <para id="id2253987">Turning our attention to software design, we must make just a small (and obvious) specialization on design definition: the product of software design turns out to be a <emphasis>software system representation</emphasis>. This way, a software design may typically describe many aspects of the software system. Budgen identifies some of these aspects <link target-id="bid1"/>:</para>
+        <list id="id2254007" list-type="bulleted">
+          <item id="uid8">the static structure of the system, including any subprograms to be used and their hierarchy;
+</item>
+          <item id="uid9">any data objects to be used;
+</item>
+          <item id="uid10">the algorithms to be used;
+</item>
+          <item id="uid11">the packaging of the system, in terms of how modules are grouped in compilation units (assuming that implementation will use a conventional imperative programming language); and
+</item>
+          <item id="uid12">interactions between components, including the form these should take, and the nature of any causal links.
+</item>
+        </list>
+        <section id="uid13">
+          <title>Characteristics of Software Design</title>
+          <para id="id2254072">Because designing all these aspects of a software system might be hard work, its benefits must be brought to light. We soon see that these benefits are analogous to the benefits of general design.
+Software development consumes time and money. Also, it is quite obvious that no one wants to spend his or her resources in developing software that solves the wrong problem. Considering this, just like when we were generally describing design, the possibility of early evaluation is desirable because it helps to ensure the stakeholders the development of the right program. Software design enables this early evaluation, because its product describes several aspects of the final program. Also, it is often less expensive to obtain than the whole program.</para>
+          <para id="id2254088">When modeling a software system, thus designing it, the designer focuses on the domain problem. This enables the designer to distinguish the problem's essential complexity from the accidental one. As stated by Brooks <link target-id="bid2"/>, this separation is known to impact positively on the quality of the final program.</para>
+          <para id="id2254102">Just like general design, software design helps on estimating costs, <emphasis>e.g.</emphasis>, how long all the development process will be, how many implementers will be necessary for a specific module, should a module be implemented or bought, what group is responsible for implementing a specific module, and so on.</para>
+          <para id="id2254115">Finally, because it contains knowledge from the system that can be recorded, transmitted, and discussed, software design can act as a communication vehicle. For example, if a software system is to be presented to a new member of the development team, before making her dive into the code, valuable information can be passed to her via the software design. Moreover, if the audience of this presentation is a program user, information (often abridged) from the design is even more necessary, since it may not make sense showing software source code to this kind of audience.</para>
+          <para id="id2254128">Nevertheless, some important observations related to these characteristics must be made.</para>
+          <para id="id2254133">While the design process occurs, it is possible that the person who wants the software to be built for solving her problem (the client) (1) change her mind about the very problem, (2) describe her problem incorrectly, or even (3) consider that the problem itself changed, or have been solved, during the design process. All these three possibilities must be kept in mind because they may lead the designer to fail on achieving the client's objectives and eventually to waste time and money.</para>
+          <para id="id2254145">Since a software design is just a model, its detail level may not be adequate for certain kinds of evaluation. In fact, evaluating a software design without enough details can lead to wrong results and then to wrong programs. This is quite common when evaluating performance, especially when bad designers consider insufficient detail for this purpose. For example, a performance design evaluation stated that a specific system was able to cope with a thousand users accessing it simultaneously. However, this very design did not add enough details on the actions performed by users. The case was that the performance analysis was made considering that each action consumed less resources than they in fact did after implemented. As expected, this system failed miserably when the number of concurrent users started to grow near the expected limit of a thousand users.</para>
+          <para id="id2254162">Finally, although a software design is correct, it may not be followed as such during its implementation. So, we must be aware that wrong implementation of a design can lead to wrong software just like a wrong design would.</para>
+          <para id="id2254170">We understand that software design can lead to some drawbacks that are not to be ignored, but its advantages, as we have seen, are very relevant too. Considering all this, we believe that understanding the fundamentals of (software) design, as well good practices, guidelines, and enabling techniques are essential to an aspiring architect.</para>
+        </section>
+      </section>
+    </section>
+    <section id="cid2">
+      <title>Elements of software design process</title>
+      <para id="id2254187">The design process can be described as the process of choosing a representation of a solution from a set of alternatives, given the constraints towards a set of goals. It can be divided in two phases <link target-id="bid3"/>: diversification and convergence.</para>
+      <para id="id2254199">The diversification is the phase of generating alternatives. Not necessarily documents describing a possible solution, but, at least, on the designer's mind. These alternatives are the solution candidates and are generated/obtained from knowledge, catalogs, or previous experience. During the convergence phase, the designer chooses the alternative (or the combination of alternatives) that meets the intended goals. The alternative selected will be the solution, which will meet the constraints imposed by the problem domain. The solution then may be described using some representation. The representation chosen must fit its purpose: describe the solution and the process to build the artifact that reaches the intended goals.</para>
+      <para id="id2254215">From the paragraph above, we must emphasize the following elements: <emphasis>goals</emphasis>, <emphasis>constraints</emphasis>, <emphasis>alternatives</emphasis>, <emphasis>representations</emphasis>, and <emphasis>solutions</emphasis><link target-id="bid4"/>. These elements together define a conceptual framework that helps to understand the software design process.</para>
+      <section id="uid14">
+        <title>Goals</title>
+        <para id="id2254260">Design begins with a need. If something is to be designed, though to be built, it is because the outcome of the design process will fulfill this need. In Software Engineering, the necessity starts from a customer who specifies what are her needs and therefore what are the goals to be achieved with the software system to be designed. So, the <emphasis>goal</emphasis> of the design process is to <emphasis>achieve a solution that will solve the customer's needs</emphasis>. In software design, goals are also referred to as requirements. Software design is mainly concerned on two types of requirements: functional and nonfunctional requirements.</para>
+        <para id="id2254284">A functional requirement specifies the functionality that a system will exhibit. In other words, <emphasis>what</emphasis> the system is to perform according to the customer. For example, a functional requirement for a sorting program is to provide the ability to sort integers. Another example could be related to a software system that manages the inventory of a movie rental store. If we were to enumerate the functional requirements of a system like this, among them would be: the ability to search for a movie by its keywords, the ability to perform a movie rental, the ability to perform a movie return, and many others.</para>
+        <para id="id2254303">On the other hand, a nonfunctional requirement specifies properties or characteristics that a software system must exhibit other than the observable behavior <link target-id="bid5"/>. Specifically, it is concerned on <emphasis>how</emphasis> the software will function. Back to our sorting program example, a nonfunctional requirement is the customer's concern with the running time of the sorting function (<emphasis>e.g.</emphasis>, it is acceptable that the sorting algorithm execution time has the growth rate of <m:math><m:mrow><m:mi>O</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo form="prefix">log</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math>, where <m:math><m:mi>n</m:mi></m:math> is the size of the input). If we are talking about the movie rental store software, one nonfunctional requirement can be described as exposing some system's functions, such as the search for movie by its keywords, to be accessible via browser to its users.</para>
+        <para id="id2254369">As nonfunctional requirements play an important role on software architecture, we may return to them in the chapter on Nonfunctional Requirements, where they will exemplified, described, and categorized in detail, as well they will be correlated to their imposers, the system's stakeholders.</para>
+      </section>
+      <section id="uid15">
+        <title>Constraints</title>
+        <para id="id2254385">A design product must be feasible. Considering this, a design constraint is the rule, requirement, relation, convention, or principle that define the context of design, in order to achieve a feasible design product. Smith and Browne gave a detailed description of the role of constraints on design <link target-id="bid4"/>:</para>
+        <para id="id2254398">
+          <quote display="block" id="idm1471856">The notion of constraint is central to design. [...] This centrality derives from the nature of design problems: something new must be created; human imagination is able to generate various possibilities; but this capacity and the alternatives it proposes must be managed by consideration of what is feasible. Constraints serve this purpose. They express relations among properties or variables of the proposed artifact and its environment or context.</quote>
+        </para>
+        <para id="id2254411">It is important to know that constraints are related to goals, and sometimes they can even be exchanged. However, in order to differentiate them, it is also important to understand that are not only the goals that rule what is to be designed. In other words, a software system may have clear goals, but its design, or some possibilities of it, may not be feasible because of its constraints.</para>
+        <para id="id2254421">In order to grasp the role of constraints in design, let us consider two examples. In the first example, despite the software system has a clear goal, its design is not feasible due to some of its constraints. In the second, a software system also has a clear goal, but just a clear design possibility is constrained.</para>
+        <para id="id2254429">First, please consider that a customer describes a simple goal to be achieved by a system: it must be able to decide whether its input, a description of another program, finishes running or not. An inexperienced software designer might even try to find a design possibility for this requirement – but this would be in vain. There is a theoretical constraint in computer science, widely known as the halting problem, which forbids a program to decide whether or not another program halts after its execution, thus not allowing achieving a solution. So, a design was not allowed due to its constraints even with a clear stated goal.</para>
+        <para id="id2254453">In the second example, the customer requires the following for a software system: the system must read input data from a specific card reader from a specific manufacturer. Besides the goal, the designer finds the following restriction. The specific manufacturer does not provide the card reader drivers for one of the operating systems the system must execute on. If it werenât for this restriction, the design for the input data module would be quite straightforward: just rely on the hardware driver to fetch the input data from cards. But now the designer will have to work out an alternative design to handle this restriction. One design possibility could be emulating one of the operating systems supported by the manufacturer when the system is executing in a non-supported environment. This would mean the creation of a layer of abstraction that would represent the supported environment and eventually be implemented by a native or an emulated system. Another possibility could be just designing and implementing the missing driver.</para>
+      </section>
+      <section id="uid16">
+        <title>Alternatives</title>
+        <para id="id2254486">A design alternative is a possibility of solution. Since design problems often have multiple solutions, since design problems often have multiple solutions, the designer is expected to generate multiple design alternatives for a single problem. We must understand that the designer, after understanding the problem's goals and constraints, has two concerns: the alternative generation and the solution election among the alternatives.</para>
+        <para id="id2253530">Alternative generation poses the real challenge for a designer. Unlike decision problems area where decision alternatives are known or can be discovered through search methods, design alternatives must be created. This creation process then must be controlled by design enabling techniques, and designer's experiential knowledge and creative imagination <link target-id="bid4"/>. <link target-id="cid4">"Enabling Techniques"</link> will present some essential techniques for a designer.</para>
+        <para id="id2253550">The solution election is simply the choice of one of the alternatives that, according to the designer, will best solve the problem. This choice must be made employing reasoned analysis and experience. The following subsections better explain solutions and their representations.</para>
+        <para id="id2253558">Back to our sorting program example, let us only consider one aspect of it, the sorting algorithm to be used, and see how many alternatives a designer could generate. A quick search on the Internet returned nine algorithms that respect the growth rate of <m:math><m:mrow><m:mi>O</m:mi><m:mo>(</m:mo><m:mi>n</m:mi><m:mo form="prefix">log</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:math> constraint (binary tree sort, heapsort, in-place merge sort, introsort, library sort, merge sort, quicksort, smoothsort, strand sort). So, we have nine design alternatives that can be easily achieved. On the other hand, an experienced designer, who knows that these algorithms may run better or worse according to the input, proposes that two algorithms will added to the design and, on every run, one is elected to be used according to the input. Then, we have more design alternatives being generated. Please notice that the alternative generation can go on and on as the designer considers more aspects of the problem. Nevertheless, she must know when to stop the alternative generation, since design problems have potentially infinite alternative solutions. Such knowledge comes with experience.</para>
+      </section>
+      <section id="uid17">
+        <title>Representations</title>
+        <para id="id2253609">Representations are the language of design. Although the true product of design is a representation for artifact construct, representing the solution is not the only purpose of representation. It also supports the design process. This support happens by allowing communication between stakeholders and by serving as a record of commitments.</para>
+        <para id="id2253618">A design representation allows communication because it turns alternatives into manipulable products, so they can be described, analyzed, and discussed not only by their author but also by others. Please observe that there are multiple dimensions to be represented on a single software design alternative. These dimensions may comprise runtime behavior, structure, and relation between logical entities to physical entities just to name a few. These dimensions are often exhibited on different types of representations, which later we will name them views.</para>
+        <para id="id2253631">In order to illustrate design representations, let us present two dimensions of our sorting program example by using two different representations. The first representation, <link target-id="uid18"/>, shows the structure from a design possibility of our example using Unified Modeling Language. Observing this representation, we see how the solution was decomposed, how each class of the structure relates to each other, or even see what points could be replaced by ready-made components, which must implement the same interfaces specified on the representation. One thing that must be noticed is that this representation is not self-contained, since knowledge on UML is needed by the reader to fully understand this representation.</para>
+        <figure id="uid18" orient="horizontal">
+          <media id="idp4017760" alt=""><image src="../../media/sorting-class-diagram.png" mime-type="image/png" width="290"/><image for="pdf" src="../../media/sorting-class-diagram.eps" mime-type="application/postscript"/></media>
+          <caption>Structural representation of a sorting program</caption>
+        </figure>
+        <para id="id2253661">The second representation, <link target-id="uid19"/>, shows the example's runtime behavior when sorting with high level of detail. Although we cannot see from this representation the same information presented on the previous one, this enables us to analyze how the program will asymptotically behave according the growth rate of its input. Also, we can have the notion of how much space is needed to perform the algorithm.</para>
+        <figure id="uid19" orient="horizontal">
+          <media id="idp10616832" alt=""><image src="../../media/sort-pseudocode.png" mime-type="image/png" width="401"/><image for="pdf" src="../../media/sort-pseudocode.eps" mime-type="application/postscript"/></media>
+          <caption>Merge sort pseudocode <link target-id="bid6"/></caption>
+        </figure>
+        <para id="id2254792">Both representations show important aspects of a system's design, nevertheless one involved on its development might be interested on aspects other than its structure or algorithm asymptotic analysis. As a matter of fact, other representations might be wanted for other purposes and it is the role of the design process to provide them.</para>
+        <para id="id2254801">In addition, if we have considered multiple versions of a single representation, <emphasis>e.g.</emphasis>, multiple versions obtained until the pseudocode shown on <link target-id="uid19"/>, we could see the evolution of the design decisions made over time, <emphasis>e.g.</emphasis>, the evolution from a standard merge sort to an in-place merge sort. The recording of multiple versions are important to understand what decisions led to the design's current state.</para>
+      </section>
+      <section id="uid20">
+        <title>Solutions</title>
+        <para id="id2254833">A design solution is nothing more than a description enabling system construction that uses one or many representations in order to expose sufficient details. Its characteristics are listed in the following paragraphs.</para>
+        <para id="id2254840"><emphasis>Design solutions mirror the problem complexity</emphasis>, usually having many attributes and interrelationships. We can observe this characteristic, for example, when designing a solution for managing the inventory of a DVD rental store. Whatever the solution is, it must contain attributes such as movies, DVDs, clients, and genres, which will represent the elements inherent to the problem. However, this is not enough. It must also contain relations such as “a client can rent one or more DVDs”, “a movie have one or more genres”, or “a DVD must contain one or more movies”, which will behave just like the relations on the problem domain. Consequently, when many different attributes have different interrelationships between themselves, complexity emerges.</para>
+        <para id="id2254872"><emphasis>It is difficult to validate design solutions.</emphasis> The complexity of the solution renders many points of possible validation against design goals. The very problem resides on how well the design goals are described. Usually, only high-level goals are specified for very complex problems, so validation is hardened.</para>
+        <para id="id2254885">Lastly, <emphasis>most design problems have many acceptable solutions.</emphasis> This is intrinsic to design problems. Since many alternatives can be generated for a single design problem, as many design solutions are eventually reproduced.</para>
+        <para id="id2254897">The product of the design process is always a design solution. However, despite being a description enabling system construction, nothing is said about the level of detail a solution must incorporate. It comes out that the software design process can occur in many levels of detail. These levels of software design are the subjects of the next section.</para>
+      </section>
+    </section>
+    <section id="cid3">
+      <title>Levels of software design</title>
+      <para id="id2254916">According to the Guide to Software Engineering Body of Knowledge (SWEBOK) <link target-id="bid7"/>, software design consists of two activities: <emphasis>top-level design</emphasis> and <emphasis>detailed design</emphasis>.</para>
+      <para id="id2254938">The top-level design, also called architectural design, is concerned on describing the fundamental organization of the system, identifying its various components and their relationships to each other and the environment in order to meet the system's quality goals. In contrast to top-level design, detailed design is more concerned on describing each component sufficiently to allow for its construction according to the top-level design.</para>
+      <para id="id2254949">The clear separation of these activities may not always occur during software development process. Sometimes a designer performs both activities in parallel, conceiving a design that will both meet the quality requirements and also allow for the construction of the system. Nevertheless, we primarily consider this conceptual separation to keep the focus only on software architecture, which is the main subject of this book and will be discussed in the following chapters.</para>
+      <para id="id2254960">However, just before starting our studies on Software Architecture, we would like to present some principles essential to every design activity, which are called enabling techniques.</para>
+    </section>
+    <section id="cid4">
+      <title>Enabling Techniques</title>
+      <para id="id2254974">Enabling techniques are guidelines, approaches, and key notions that are known to result on generally good and sound software designs. Since there are many great books and articles on enabling techniques, the purpose of this section is just to scratch the surface of this subject by giving an overview of it. The essential enabling techniques for an aspiring designer are:</para>
+      <section id="uid21">
+        <title>Abstraction</title>
+        <para id="id2254990">Abstraction is an essential principle used by designers to deal with complexity. This strategy recommends representing an element only by its “essential characteristics that distinguish it from all other kinds of objects and thus provide crisply defined conceptual boundaries relative to the perspective of the viewer” <link target-id="bid8"/>. Considering this approach, the element representation tends to be simpler, since unnecessary details are put aside, and eventually easier to understand, communicate, and analyze.</para>
+        <para id="id2255012">As a matter of fact, most of the techniques presented help the designer to raise the level of abstraction of the design process in order to lower the level of complexity of the solution.</para>
+      </section>
+      <section id="uid22">
+        <title>Information Hiding</title>
+        <para id="id2255026">“Information hiding involves concealing the details of a [system entity's] implementation from its clients” <link target-id="bid9"/>. By doing this, the coupling between entities is minimized and their contribution to system complexity is restricted to what information they expose.</para>
+        <para id="id2255040">There are several approaches to perform information hiding: by modularizing the system, by separating its concerns, by separating interface and implementation, or by separating policy and implementation.</para>
+      </section>
+      <section id="uid23">
+        <title>Modularization</title>
+        <para id="id2255054">Modularization is the meaningful decomposition of a system into modules. It introduces well-defined and documented partitions (modules) within a system by deciding how to physically package the logical structure entities of an application. Some benefits of modularization follow:</para>
+        <list id="id2255062" list-type="bulleted">
+          <item id="uid24">It promotes understanding, since each module can be grasped at a time,
+</item>
+          <item id="uid25">It eases development, since each module can be designed, implemented, and tested separately,
+</item>
+          <item id="uid26">It shortens development time, since modules can be implemented in parallel or reused or even bought, and
+</item>
+          <item id="uid27">It promotes product flexibility, since a module can replace by another if both respect the same interfaces.
+</item>
+        </list>
+      </section>
+      <section id="uid28">
+        <title>Separation of Concerns</title>
+        <para id="id2255118">Separation of concerns is tightly coupled to the modularization technique. Actually, it is a rule of thumb to define how modules should be separated to each other: different or unrelated concerns should be restricted to different modules.</para>
+      </section>
+      <section id="uid29">
+        <title>Coupling and Cohesion</title>
+        <para id="id2255133">Coupling and cohesion are principles used to measure whether the design was well divided into modules.</para>
+        <para id="id2255138">Coupling is the strength of interdependence between software modules. The more dependent is module A to module B internals, the stronger is the coupling between A and B. Strong coupling implies the modules involved are harder to understand because they must be understood together, harder to change because these changes will impact more than one module, and harder to correct because the problem may be spread over the tightly coupled modules.</para>
+        <para id="id2255156">Opposed to coupling, cohesion is an intra-module measure. Cohesion is the strength of relation between tasks performed by a module. The tasks of a module can be related to each other by several levels, then converted on types of cohesion:</para>
+        <list id="id2255164" list-type="labeled-item">
+          <item id="uid30"><label>Functional cohesion:</label>tasks are grouped because of the similarity of their functions.
+</item>
+          <item id="uid31"><label>Sequential cohesion:</label>tasks are grouped because they belong to the same sequence of operations, they share data at each step, but they don't make up a complete task when done together.
+</item>
+          <item id="uid32"><label>Communicational cohesion:</label>tasks are grouped because they make use of the same data and aren't related in any other way.
+</item>
+          <item id="uid33"><label>Temporal cohesion:</label>tasks are grouped because they are executed at the same time.
+</item>
+          <item id="uid34"><label>Procedural cohesion:</label>tasks are grouped because they are executed in a specified order.
+</item>
+          <item id="uid35"><label>Logical cohesion:</label>tasks are grouped only by a shared control flag that will indicate which task will be performed during execution.
+</item>
+          <item id="uid36"><label>Coincidental cohesion:</label>tasks are grouped without any criteria.
+</item>
+        </list>
+        <para id="id2255263">In order to achieve sound designs, we can also sort the types of cohesion from the most to the least desirable on design <link target-id="bid10"/>: functional, sequential, communicational, temporal, procedural, logical, and coincidental.</para>
+      </section>
+      <section id="uid37">
+        <title>Separation of Policy and Implementation</title>
+        <para id="id2255283">This technique enables separation of concerns. The separation of policy and implementation technique simply states: “A [module] of a software system should deal with policy or implementation, but not both.” <link target-id="bid9"/> Modules responsible for implementation should only execute algorithms without any context/domain-sensitive decisions. These decisions must be left to policy modules, which are often application-specific and are often responsible of supplying arguments for the implementation modules.</para>
+        <para id="id2255304">This separation eases reuse and maintenance of implementation modules, since they are less specific than policy modules.</para>
+      </section>
+      <section id="uid38">
+        <title>Separation of Interface and Implementation</title>
+        <para id="id2255317">Separation of interface and implementation eases modularization. This technique recommends the description of functionality by means of contracts, also called interfaces. Modules will eventually implement these interfaces in order to be part of the system.</para>
+        <para id="id2255325">Using this technique, the coupling between modules and clients is lowered, since clients are only bound only to interfaces – not to implementations.</para>
+      </section>
+    </section>
+    <section id="cid5">
+      <title>Summary</title>
+      <para id="id2255341">The purpose of this chapter was to provide the fundamental knowledge on Software Design in order to enable the reader to be ready for the study of Software Architecture. We expect that, by now, the reader is able to understand:</para>
+      <list id="id2255348" list-type="bulleted">
+        <item id="uid39">what software design is and what are its characteristics and benefits,
+</item>
+        <item id="uid40">how software design problems can be decomposed, and
+</item>
+        <item id="uid41">what are the general enabling techniques for performing software design.
+</item>
+      </list>
+      <para id="id2255383">As a matter of fact, since there are many great books on Software Design for the same audience of ours – the inexperienced reader, it was not our intention to go deeper on the subject covered in this chapter. Our intention was just to introduce it. For more detailed information, we recommend the reader to check the books on Software Design indicated in this chapter's bibliography.</para>
+    </section>
+  </content>
+  <bib:file>
+    <bib:entry id="bid7">
+      <bib:book>
+<!--required fields-->
+        <bib:author>Abran, Alain and Moore, James W. and Bourque, Pierre and Dupuis, Robert and Tripp, Leonard L.</bib:author>
+        <bib:title>Guide to the Software Engineering Body of Knowledge (SWEBOK)</bib:title>
+        <bib:publisher>IEEE</bib:publisher>
+        <bib:year>2004</bib:year>
+<!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month/>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid3">
+      <bib:incollection>
+<!--required fields-->
+        <bib:author>Belady, L.</bib:author>
+        <bib:title>Foreword</bib:title>
+        <bib:booktitle>Software Design: Methods and Techniques (L.J. Peters, author)</bib:booktitle>
+        <bib:publisher>Yourdon Press</bib:publisher>
+        <bib:year>1981</bib:year>
+<!--optional fields-->
+        <bib:editor/>
+        <bib:number/>
+        <bib:series/>
+        <bib:type/>
+        <bib:chapter/>
+        <bib:pages/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month/>
+        <bib:note/>
+      </bib:incollection>
+    </bib:entry>
+    <bib:entry id="bid8">
+      <bib:book>
+<!--required fields-->
+        <bib:author>Booch, Grady and Maksimchuk, Robert A. and Engel, Michael W. and Young, Bobbi J. and Conallen, Jim and Houston, Kelli A.</bib:author>
+        <bib:title>Object-Oriented Analysis and Design with Applications (3rd Edition)</bib:title>
+        <bib:publisher>Addison-Wesley Professional</bib:publisher>
+        <bib:year>2007</bib:year>
+<!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month>April</bib:month>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid9">
+      <bib:book>
+<!--required fields-->
+        <bib:author>Buschmann, Frank and Meunier, Regine and Rohnert, Hans and Sommerlad, Peter and Stal, Michael and Sommerlad, Peter and Stal, Michael</bib:author>
+        <bib:title>Pattern-Oriented Software Architecture, Volume 1: A System of Patterns</bib:title>
+        <bib:publisher>John Wiley &amp; Sons</bib:publisher>
+        <bib:year>1996</bib:year>
+<!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month>August</bib:month>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid2">
+      <bib:book>
+<!--required fields-->
+        <bib:author>Brooks, Frederick P.</bib:author>
+        <bib:title>The Mythical Man-Month: Essays on Software Engineering, 20th Anniversary Edition</bib:title>
+        <bib:publisher>Addison-Wesley Professional</bib:publisher>
+        <bib:year>1995</bib:year>
+<!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month>August</bib:month>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid1">
+      <bib:book>
+<!--required fields-->
+        <bib:author>Budgen, David</bib:author>
+        <bib:title>Software Design (2nd Edition)</bib:title>
+        <bib:publisher>Addison Wesley</bib:publisher>
+        <bib:year>2003</bib:year>
+<!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month>May</bib:month>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid10">
+      <bib:book>
+<!--required fields-->
+        <bib:author>Mcconnell, Steve</bib:author>
+        <bib:title>Code Complete, Second Edition</bib:title>
+        <bib:publisher>Microsoft Press</bib:publisher>
+        <bib:year>2004</bib:year>
+<!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month>June</bib:month>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid4">
+      <bib:article>
+<!--required fields-->
+        <bib:author>Smith, G. F. and Browne, G. J.</bib:author>
+        <bib:title>Conceptual foundations of design problem solving</bib:title>
+        <bib:journal>Systems, Man and Cybernetics, IEEE Transactions on</bib:journal>
+        <bib:year>1993</bib:year>
+<!--optional fields-->
+        <bib:volume>23</bib:volume>
+        <bib:number>5</bib:number>
+        <bib:pages>1209–1219</bib:pages>
+        <bib:month/>
+        <bib:note/>
+      </bib:article>
+    </bib:entry>
+    <bib:entry id="bid0">
+      <bib:inproceedings>
+<!--required fields-->
+        <bib:author>Taylor, Richard N. and van der Hoek, Andre</bib:author>
+        <bib:title>Software Design and Architecture The once and future focus of software engineering</bib:title>
+        <bib:booktitle>FOSE '07: 2007 Future of Software Engineering</bib:booktitle>
+        <bib:year>2007</bib:year>
+<!--optional fields-->
+        <bib:editor/>
+        <bib:number/>
+        <bib:series/>
+        <bib:pages>226–243</bib:pages>
+        <bib:address>Washington, DC, USA</bib:address>
+        <bib:month/>
+        <bib:organization/>
+        <bib:publisher>IEEE Computer Society</bib:publisher>
+        <bib:note/>
+      </bib:inproceedings>
+    </bib:entry>
+    <bib:entry id="bid5">
+      <bib:book>
+<!--required fields-->
+        <bib:author>Wiegers, Karl E.</bib:author>
+        <bib:title>Software Requirements, Second Edition</bib:title>
+        <bib:publisher>Microsoft Press</bib:publisher>
+        <bib:year>2003</bib:year>
+<!--optional fields-->
+        <bib:volume/>
+        <bib:series/>
+        <bib:address/>
+        <bib:edition/>
+        <bib:month>February</bib:month>
+        <bib:note/>
+      </bib:book>
+    </bib:entry>
+    <bib:entry id="bid6">
+      <bib:misc>
+<!--required fields-->
+<!--optional fields-->
+        <bib:author>Wikipedia, </bib:author>
+        <bib:title>Merge Sort — Wikipedia, The Free Encyclopedia</bib:title>
+        <bib:howpublished/>
+        <bib:month/>
+        <bib:year>2008</bib:year>
+        <bib:note>[Online; accessed 2-September-2008]</bib:note>
+      </bib:misc>
+    </bib:entry>
+  </bib:file>
+</document>
